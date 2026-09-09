@@ -1,0 +1,11 @@
+# Impeccable munkakönyvtár (nem része a szállítandó oldalnak)
+.impeccable/
+
+# Szerkesztő / OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Ideiglenes / nem szállítandó fájlok
+screencapture-*.png
+stitch_*.zip
