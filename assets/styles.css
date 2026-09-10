@@ -126,23 +126,14 @@ a{color:inherit}
 
 /* ---------- Masthead: poszter-tipográfia ---------- */
 .masthead{max-width:34ch;flex:1 1 auto}
-/* manila névtábla, nem eyebrow */
-.nameplate{
-  display:inline-flex;flex-direction:column;gap:1px;
-  margin:0 0 var(--sp-4);
-  padding:8px var(--sp-4) 9px;
-  background:var(--kraft);color:var(--ink);
-  border:var(--edge);border-radius:2px;
-  box-shadow:var(--shadow-tag);
-  transform:rotate(-1.2deg);
-}
-.nameplate__name{
-  font-family:var(--narrow);font-weight:700;text-transform:uppercase;
-  letter-spacing:.05em;font-size:clamp(14px,1.7vw,18px);
-}
-.nameplate__ev{
-  font-family:var(--narrow);font-weight:600;text-transform:uppercase;
-  letter-spacing:.12em;font-size:10px;color:var(--ink-soft);
+/* körpecsét-logó a poszter fölött */
+.masthead__logo{
+  width:clamp(88px,12vw,124px);height:auto;
+  margin:0 0 var(--sp-3);
+  border-radius:50%;
+  border:var(--edge);background:var(--paper);
+  box-shadow:var(--shadow-hard);
+  transform:rotate(-2deg);
 }
 .masthead h1{
   margin:var(--sp-2) 0 var(--sp-4);
@@ -195,9 +186,9 @@ a{color:inherit}
   transform:rotate(var(--r,-1.4deg));
   transition:transform .16s ease, background .16s ease;
 }
-.peg-tag:nth-child(3){--r:1.2deg}
-.peg-tag:nth-child(4){--r:-.6deg}
-.peg-tag:nth-child(5){--r:1.8deg}
+.peg-tag:nth-child(2){--r:1.2deg}
+.peg-tag:nth-child(3){--r:-.6deg}
+.peg-tag:nth-child(4){--r:1.8deg}
 .peg-tag::before{
   content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
   width:10px;height:10px;background:var(--ink);border-radius:50%;
@@ -205,6 +196,38 @@ a{color:inherit}
 .peg-tag:hover,.peg-tag:focus-visible{transform:rotate(0) translateY(2px)}
 .peg-tag--accent{background:var(--blue);color:#fff}
 .peg-tag--accent::before{background:var(--blue-deep)}
+
+/* a linkeket tartó doboz asztali nézetben átlátszó: a címkék maradnak a zsinóron */
+.clothesline__menu{display:contents}
+
+/* hamburger-kapcsoló — csak mobilon látszik */
+.clothesline__toggle{
+  display:none;
+  align-items:center;gap:var(--sp-2);
+  font-family:var(--narrow);font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;font-size:13px;
+  background:var(--paper);color:var(--ink);
+  padding:var(--sp-2) var(--sp-3) 7px;
+  border:var(--edge);border-radius:2px;
+  box-shadow:var(--shadow-tag);
+  cursor:pointer;
+}
+.clothesline__bars{
+  position:relative;display:block;width:18px;height:2px;
+  background:currentColor;
+  transition:background .16s ease;
+}
+.clothesline__bars::before,
+.clothesline__bars::after{
+  content:"";position:absolute;left:0;width:18px;height:2px;
+  background:currentColor;transition:transform .16s ease,top .16s ease;
+}
+.clothesline__bars::before{top:-6px}
+.clothesline__bars::after{top:6px}
+.clothesline.is-open .clothesline__toggle{background:var(--blue);color:#fff}
+.clothesline.is-open .clothesline__bars{background:transparent}
+.clothesline.is-open .clothesline__bars::before{top:0;transform:rotate(45deg)}
+.clothesline.is-open .clothesline__bars::after{top:0;transform:rotate(-45deg)}
 
 /* ---------- Spine: számozott munkamenet a hero-ban ---------- */
 .spine{
@@ -427,7 +450,7 @@ a{color:inherit}
   padding:var(--sp-3) var(--sp-4);
   background:rgba(176,80,44,.05);
 }
-.placeholder-note .ph{background:rgba(176,80,44,.16);padding:0 4px;font-weight:600;color:var(--ink)}
+.about__area{margin:var(--sp-3) 0 0;font-size:14px;color:var(--ink-soft);font-weight:600}
 
 /* ---------- Kapcsolat ---------- */
 .section--contact{padding-bottom:clamp(var(--sp-9),12vw,var(--sp-10))}
@@ -460,6 +483,13 @@ a{color:inherit}
   border-top:var(--edge);background:var(--ink);color:var(--linen);
   text-align:center;
   padding:clamp(var(--sp-7),8vw,var(--sp-9)) var(--sp-5);
+}
+.foot__logo{
+  width:78px;height:78px;
+  margin:0 auto var(--sp-4);
+  border-radius:50%;
+  border:2px solid rgba(231,222,208,.22);
+  box-shadow:var(--shadow-tag);
 }
 .foot__name{font-family:var(--stencil);font-size:clamp(22px,4vw,34px);margin:0 0 var(--sp-3)}
 .foot__row{margin:0 0 var(--sp-4);font-family:var(--narrow);text-transform:uppercase;letter-spacing:.08em;font-size:13px}
@@ -515,4 +545,38 @@ a{color:inherit}
   .step{flex-direction:column;gap:var(--sp-3)}
   .step__no{min-width:0}
   .contact__call{align-items:stretch}
+}
+
+/* ---------- Mobil menü: a zsinóros címkék helyett hamburger ---------- */
+@media (max-width:640px){
+  .clothesline{
+    width:100%;
+    flex-wrap:nowrap;justify-content:flex-end;
+    gap:0;padding-top:var(--sp-2);min-height:38px;
+  }
+  .clothesline__string{display:none}
+  .clothesline__toggle{display:inline-flex}
+
+  .clothesline__menu{
+    display:none;
+    position:absolute;top:calc(100% + 6px);right:0;left:auto;z-index:20;
+    flex-direction:column;align-items:stretch;gap:var(--sp-2);
+    width:min(240px,74vw);
+    padding:var(--sp-3);
+    background:var(--paper);
+    border:var(--edge);border-radius:2px;
+    box-shadow:var(--shadow-hard);
+  }
+  .clothesline.is-open .clothesline__menu{display:flex}
+
+  .clothesline__menu .peg-tag{
+    transform:none;box-shadow:none;
+    width:100%;text-align:center;font-size:14px;
+    padding:var(--sp-2) var(--sp-3);
+  }
+  .clothesline__menu .peg-tag::before{display:none}
+  .clothesline__menu .peg-tag:hover,
+  .clothesline__menu .peg-tag:focus-visible{transform:none;background:var(--linen-deep)}
+  .clothesline__menu .peg-tag--accent:hover,
+  .clothesline__menu .peg-tag--accent:focus-visible{background:var(--blue-deep)}
 }

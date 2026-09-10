@@ -33,4 +33,31 @@
     revealTargets.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- 3. Mobil menü: hamburger nyit/zár ---- */
+  var line = document.querySelector('.clothesline');
+  var toggle = line && line.querySelector('.clothesline__toggle');
+  var menu = line && line.querySelector('.clothesline__menu');
+  if (line && toggle && menu) {
+    var setOpen = function (open) {
+      line.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Menü bezárása' : 'Menü megnyitása');
+    };
+    toggle.addEventListener('click', function () {
+      setOpen(!line.classList.contains('is-open'));
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('.peg-tag')) { setOpen(false); }
+    });
+    document.addEventListener('click', function (e) {
+      if (line.classList.contains('is-open') && !line.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && line.classList.contains('is-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+
 })();

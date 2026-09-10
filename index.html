@@ -6,6 +6,7 @@
 <title>Flisz Roland E.V. — Festés · Mázolás · Tapétázás · Kőburkolás</title>
 <meta name="description" content="Flisz Roland egyéni vállalkozó: festés, mázolás, tapétázás, glettelés és kőburkolás. Több mint 20 év gyakorlat, pontos munkavégzés rövid határidővel, ingyenes helyszíni felmérés. Hívjon: 70/329-41-57.">
 <meta name="theme-color" content="#d8d5c9">
+<link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@500;600;700&family=Saira+Stencil+One&display=swap" rel="stylesheet">
@@ -25,16 +26,22 @@
 
   <nav class="clothesline" aria-label="Fő menü">
     <span class="clothesline__string" aria-hidden="true"></span>
-    <a class="peg-tag" href="#szolgaltatasok"><span>Szolgáltatások</span></a>
-    <a class="peg-tag" href="#munkamenet"><span>Munkamenet</span></a>
-    <a class="peg-tag" href="#rolam"><span>Rólam</span></a>
-    <a class="peg-tag peg-tag--accent" href="#kapcsolat"><span>Kapcsolat</span></a>
+    <button class="clothesline__toggle" type="button" aria-expanded="false" aria-controls="fomenu" aria-label="Menü megnyitása">
+      <span class="clothesline__bars" aria-hidden="true"></span>
+      <span class="clothesline__toggle-text">Menü</span>
+    </button>
+    <div class="clothesline__menu" id="fomenu">
+      <a class="peg-tag" href="#szolgaltatasok"><span>Szolgáltatások</span></a>
+      <a class="peg-tag" href="#munkamenet"><span>Munkamenet</span></a>
+      <a class="peg-tag" href="#rolam"><span>Rólam</span></a>
+      <a class="peg-tag peg-tag--accent" href="#kapcsolat"><span>Kapcsolat</span></a>
+    </div>
   </nav>
 
   <div class="board__inner" id="fo">
     <div class="hero-top">
       <div class="masthead">
-        <p class="nameplate"><span class="nameplate__name">Flisz&nbsp;Roland</span><span class="nameplate__ev">E.V. · egyéni vállalkozó</span></p>
+        <img class="masthead__logo" src="images/logo.jpg" alt="Flisz Roland E.V. — festő, mázoló, tapétázó, Baja" width="520" height="520">
         <h1 class="stencil">Szobafestés,<br>ami pontos<br>és <span class="u">tiszta</span>.</h1>
         <p class="masthead__verbs">Festés · Mázolás · Tapétázás · Glettelés · Kőburkolás</p>
         <p class="masthead__value">Több mint 20 év gyakorlat · pontos, rövid határidő · ingyenes helyszíni felmérés és árajánlat</p>
@@ -206,7 +213,7 @@
           <dd>Helyszíni felmérés és részletes árajánlat, kötelezettség nélkül.</dd>
         </div>
       </dl>
-      <p class="note-mark placeholder-note">Munkaterület: <span class="ph">Budapest és környéke</span>. Helytartó adat, kérjük pontosítsa a valós körzetet.</p>
+      <p class="about__area">Munkaterület: Baja és környéke.</p>
     </div>
   </section>
 
@@ -254,6 +261,7 @@
 </main>
 
 <footer class="foot">
+  <img class="foot__logo" src="images/logo.jpg" alt="" width="520" height="520" loading="lazy">
   <p class="foot__name stencil">Flisz Roland E.V.</p>
   <p class="foot__row"><a href="tel:+36703294157">70 / 329-41-57</a> · Festés · Mázolás · Tapétázás · Glettelés · Kőburkolás</p>
   <p class="foot__fine">A működési terület, az e-mail cím és az árajánlatkérő űrlap célcíme jelenleg helytartó. A végleges adatokat a vállalkozó tölti fel.</p>
