@@ -289,6 +289,8 @@ a{color:inherit}
 }
 .enamel__num{font-family:var(--narrow);font-weight:700;font-size:clamp(21px,2.4vw,30px);letter-spacing:.02em;white-space:nowrap}
 .enamel--lg .enamel__num{font-size:clamp(24px,3vw,36px)}
+/* korai telefon-CTA: alapból rejtve, csak mobilon jelenik meg */
+.cta-early{display:none}
 
 .taped-cta{
   position:relative;display:inline-block;
@@ -527,12 +529,17 @@ a{color:inherit}
   .board{padding-bottom:calc(var(--sp-7) + 34px)}
   .board__inner{padding-top:var(--sp-6);gap:var(--sp-7)}
   .masthead{max-width:none}
-  .hero-top{flex-direction:column;gap:var(--sp-7)}
+  .hero-top{flex-direction:column;gap:var(--sp-6)}
   .hero-photo{flex:0 0 auto;align-self:flex-start;width:min(320px,78%);transform:rotate(1.8deg)}
   .spine{grid-template-columns:repeat(2,1fr);gap:var(--sp-5)}
   .spine__item:last-child{grid-column:1 / -1}
   .hero-cta{flex-direction:column;align-items:stretch;gap:var(--sp-4)}
   .hero-cta .enamel,.hero-cta .taped-cta{text-align:center;align-self:stretch}
+  .cta-early{
+    display:inline-flex;align-self:stretch;
+    align-items:center;justify-content:center;text-align:center;
+  }
+  .hero-cta .enamel{display:none}
   .contact{grid-template-columns:1fr}
   .ruler__note{display:none}
 }
